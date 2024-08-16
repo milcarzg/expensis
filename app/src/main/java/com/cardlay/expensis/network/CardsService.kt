@@ -10,7 +10,7 @@ class CardsService @Inject constructor(private val cardsApi: CardsApi){
     suspend fun getCards(): List<CardModel> {
         return withContext(Dispatchers.IO) {
             val cards = cardsApi.getCards()
-            cards.body() ?: emptyList()
+            cards.body()?.cards ?: emptyList()
         }
     }
 }
